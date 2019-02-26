@@ -10,6 +10,10 @@
 npm install --save styled-input
 ```
 
+## Demo
+[View the demo here.](https://alex-taxiera.github.io/styled-input/)
+[Demo source here.](/example)
+
 ## License
 
 GPL-3.0 © [alex-taxiera](https://github.com/alex-taxiera)
