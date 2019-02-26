@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 
 import useMultiState from 'use-multi-state'
 
-import './styles/StyledInput.scss'
+import style from './styles/StyledInput.scss'
+
+const classname = (...args) => args.filter((arg) => arg).join(' ')
 
 const StyledInput = ({
   name,
@@ -15,8 +17,11 @@ const StyledInput = ({
   isRequired,
   errorMessage,
   requiredMessage,
-  wrapperClassName,
-  inputClassName
+  wrapperStyle,
+  inputStyle,
+  color,
+  errorColor,
+  accentColor
 }) => {
   const [
     [focused, setFocused],
@@ -29,47 +34,50 @@ const StyledInput = ({
     id,
     type,
     value,
-    className: inputClassName,
+    style: inputStyle,
     onFocus: () => setFocused(true),
     onBlur: () => {
       setFocused(false)
       if (isRequired && (!value || !value.trim())) {
         setError(requiredMessage)
+        onChange && onChange({ name, value, error: requiredMessage })
       }
     },
     onChange: (event) => {
       const value = event.target.value
-      const nextError = !value || !value.trim()
+      const error = isRequired && (!value || !value.trim())
         ? requiredMessage
         : isValid && !isValid(value)
           ? errorMessage
           : null
 
-      onChange && onChange({ name, value, error: nextError })
+      onChange && onChange({ name, value, error })
       setValue(value)
-      setError(nextError)
+      setError(error)
     }
   }
 
   return (
-    <div className={'styled-input' + (wrapperClassName ? ` ${wrapperClassName}` : '')}>
-      <div className="input">
+    <div className={style['styled-input']} style={wrapperStyle}>
+      <div className={style.input}>
         {type === 'textarea' ? (
           <textarea {...fieldProps} />
         ) : (
           <input {...fieldProps} />
         )}
         <span
-          className={'line' + (error ? ' error' : focused ? ' focused' : '')}
+          className={classname(style.line, (error ? style.error : null), (focused ? style.focused : null))}
+          style={{ background: error ? errorColor : accentColor }}
         />
         <label
           htmlFor={id}
-          className={(value ? 'with-value' : '') + (error ? ' error' : focused ? ' focused' : '')}
+          className={classname((value ? style['with-value'] : null), (error ? style.error : focused ? style.focused : null))}
+          style={{ color: error ? errorColor : focused ? accentColor : color }}
         >
           {label}
         </label>
       </div>
-      <div className="error-message">
+      <div className={style['error-message']} style={{ color: errorColor }}>
         {error}
       </div>
     </div>
@@ -86,8 +94,11 @@ StyledInput.propTypes = {
   isRequired: PropTypes.bool,
   errorMessage: PropTypes.string,
   requiredMessage: PropTypes.string,
-  wrapperClassName: PropTypes.string,
-  inputClassName: PropTypes.string
+  wrapperStyle: PropTypes.object,
+  inputStyle: PropTypes.object,
+  color: PropTypes.string,
+  errorColor: PropTypes.string,
+  accentColor: PropTypes.string
 }
 
 StyledInput.defaultProps = {

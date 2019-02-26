@@ -16,7 +16,7 @@ const useForm = (callback) => {
   const handleChange = ({ name, value, error }) => {
     const newValues = { ...values, [name]: { value, error } }
     setValues(newValues)
-    setHasErrors(newValues.some(({ error }) => error))
+    setHasErrors(Object.keys(newValues).some((key) => newValues[key].error))
   }
 
   return {

@@ -1,13 +1,21 @@
 $small: 12px;
+$error-color: red;
+$accent-color: darkslateblue;
 
 .styled-input {
   position: relative;
+  color: #999;
 }
 
 .styled-input .error {
+  color: $error-color;
+}
+
+.styled-input .error-message {
+  color: $error-color;
   height: 1rem;
   text-align: left;
-  padding-left: $small;
+  padding-left: 1rem;
   font-size: $small;
   white-space: nowrap;
 }
@@ -23,8 +31,8 @@ $small: 12px;
 
 .styled-input label {
   position: absolute;
-  top: 1em;
-  left: 1em;
+  top: 1rem;
+  left: 1rem;
   z-index: 1;
   -webkit-transition: all 0.25s ease;
           transition: all 0.25s ease;
@@ -37,6 +45,10 @@ $small: 12px;
   -webkit-transition: all 0.125s ease;
           transition: all 0.125s ease;
   pointer-events: all;
+}
+
+.styled-input label.focused {
+  color: $accent-color;
 }
 
 .styled-input .input input,
@@ -54,6 +66,7 @@ $small: 12px;
 }
 
 .styled-input .input textarea {
+  font-family: inherit;
   resize: none;
   overflow: auto;
   min-height: 4rem;
@@ -61,6 +74,7 @@ $small: 12px;
 }
 
 .styled-input .input .line {
+  background: $accent-color;
   display: block;
   width: 0;
   height: 3px;
@@ -76,4 +90,8 @@ $small: 12px;
   width: 100%;
   -webkit-transition: all 0.075s ease;
           transition: all 0.075s ease;
+}
+
+.styled-input .input .line.error {
+  background: $error-color;
 }

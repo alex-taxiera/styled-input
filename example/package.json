@@ -6,7 +6,8 @@
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-scripts": "2.1.5",
-    "styled-input": "file:.."
+    "styled-input": "file:..",
+    "node-sass": "file:../node_modules/node-sass"
   },
   "scripts": {
     "start": "react-scripts start",
