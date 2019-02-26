@@ -1,79 +1,79 @@
-$small: 12px;
+$normal: 1rem;
+$small: 0.65rem;
 $error-color: red;
 $accent-color: darkslateblue;
 
-.styled-input {
+.styled-input-wrapper {
   position: relative;
   color: #999;
 }
 
-.styled-input .error {
+.styled-input-error {
   color: $error-color;
 }
 
-.styled-input .error-message {
-  color: $error-color;
-  height: 1rem;
+.styled-input-error-message {
+  height: $normal;
   text-align: left;
-  padding-left: 1rem;
+  padding-left: $normal;
   font-size: $small;
   white-space: nowrap;
 }
 
-.styled-input .input {
+.styled-input {
   position: relative;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: $normal;
   border-radius: 3px;
   -webkit-box-shadow: 0 0 12px rgba(192, 192, 192, 0.6);
           box-shadow: 0 0 12px rgba(192, 192, 192, 0.6);
 }
 
-.styled-input label {
+.styled-input-label {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: $normal;
+  left: $normal;
   z-index: 1;
   -webkit-transition: all 0.25s ease;
           transition: all 0.25s ease;
   pointer-events: none;
 }
 
-.styled-input label.with-value {
+.styled-input-with-value {
   font-size: $small;
-  top: -1rem;
+  top: -$normal;
   -webkit-transition: all 0.125s ease;
           transition: all 0.125s ease;
   pointer-events: all;
 }
 
-.styled-input label.focused {
+.styled-input-focused {
   color: $accent-color;
 }
 
-.styled-input .input input,
-.styled-input .input textarea {
+.styled-input input,
+.styled-input textarea {
   width: 100%;
   display: block;
-  padding: 1rem;
+  padding: $normal;
   border: 0;
-  font-size: 1rem;
+  font-size: $normal;
 }
 
-.styled-input .input input:focus,
-.styled-input .input textarea:focus {
+.styled-input input:focus,
+.styled-input textarea:focus {
   outline: 0;
 }
 
-.styled-input .input textarea {
+.styled-input textarea {
   font-family: inherit;
   resize: none;
   overflow: auto;
-  min-height: 4rem;
-  height: 8rem;
+  min-height: 4 * $normal;
+  height: 8 * $normal;
 }
 
-.styled-input .input .line {
+.styled-input-line {
   background: $accent-color;
   display: block;
   width: 0;
@@ -86,12 +86,12 @@ $accent-color: darkslateblue;
           transition: all 0.125s ease;
 }
 
-.styled-input .input .line.focused {
+.styled-input-line.styled-input-focused {
   width: 100%;
   -webkit-transition: all 0.075s ease;
           transition: all 0.075s ease;
 }
 
-.styled-input .input .line.error {
+.styled-input-line.styled-input-error {
   background: $error-color;
 }
