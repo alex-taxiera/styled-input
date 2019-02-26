@@ -1,29 +1,31 @@
 import useMultiState from 'use-multi-state'
 
-const useForm = (callback) => {
+const useForm = (state = {}, callback) => {
   const [
     [values, setValues],
-    [hasErrors, setHasErrors]
-  ] = useMultiState({}, true)
+    [hasErrors, setHasErrors],
+    [isComplete, setIsComplete]
+  ] = useMultiState(state, true, !Object.values(state).some(({ isRequired }) => isRequired))
 
   const handleSubmit = (event) => {
-    if (event) {
-      event.preventDefault()
-    }
+    event && event.preventDefault()
     callback()
   }
 
   const handleChange = ({ name, value, error }) => {
     const newValues = { ...values, [name]: { value, error } }
     setValues(newValues)
-    setHasErrors(Object.keys(newValues).some((key) => newValues[key].error))
+    const vals = Object.values(newValues)
+    setHasErrors(vals.some(({ error }) => error))
+    setIsComplete(!vals.some(({ value, isRequired }) => !value.trim() && isRequired))
   }
 
   return {
     handleChange,
     handleSubmit,
     values,
-    hasErrors
+    hasErrors,
+    isComplete
   }
 }
 
