@@ -12,7 +12,7 @@ const App = () => {
     hasErrors,
     handleChange,
     handleSubmit
-  } = useForm(['name', 'message'], () => {
+  } = useForm(() => {
     if (canSubmit) {
       setSuccess(true)
     } else {
@@ -49,8 +49,6 @@ const App = () => {
               type="text"
               isRequired
               onChange={handleChange}
-              accentColor="yellow"
-              errorColor="#21CABA"
             />
             <StyledInput
               name="message"

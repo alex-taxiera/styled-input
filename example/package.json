@@ -2,6 +2,7 @@
   "name": "example",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://alex-taxiera.github.io/styled-input",
   "dependencies": {
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
