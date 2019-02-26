@@ -10,22 +10,6 @@
 npm install --save styled-input
 ```
 
-## Usage
-
-```jsx
-import React, { Component } from 'react'
-
-import MyComponent from 'styled-input'
-
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
-```
-
 ## License
 
 GPL-3.0 © [alex-taxiera](https://github.com/alex-taxiera)
