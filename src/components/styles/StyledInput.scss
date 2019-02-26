@@ -1,0 +1,79 @@
+$small: 12px;
+
+.styled-input {
+  position: relative;
+}
+
+.styled-input .error {
+  height: 1rem;
+  text-align: left;
+  padding-left: $small;
+  font-size: $small;
+  white-space: nowrap;
+}
+
+.styled-input .input {
+  position: relative;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 12px rgba(192, 192, 192, 0.6);
+          box-shadow: 0 0 12px rgba(192, 192, 192, 0.6);
+}
+
+.styled-input label {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  z-index: 1;
+  -webkit-transition: all 0.25s ease;
+          transition: all 0.25s ease;
+  pointer-events: none;
+}
+
+.styled-input label.with-value {
+  font-size: $small;
+  top: -1rem;
+  -webkit-transition: all 0.125s ease;
+          transition: all 0.125s ease;
+  pointer-events: all;
+}
+
+.styled-input .input input,
+.styled-input .input textarea {
+  width: 100%;
+  display: block;
+  padding: 1rem;
+  border: 0;
+  font-size: 1rem;
+}
+
+.styled-input .input input:focus,
+.styled-input .input textarea:focus {
+  outline: 0;
+}
+
+.styled-input .input textarea {
+  resize: none;
+  overflow: auto;
+  min-height: 4rem;
+  height: 8rem;
+}
+
+.styled-input .input .line {
+  display: block;
+  width: 0;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all 0.125s ease;
+          transition: all 0.125s ease;
+}
+
+.styled-input .input .line.focused {
+  width: 100%;
+  -webkit-transition: all 0.075s ease;
+          transition: all 0.075s ease;
+}

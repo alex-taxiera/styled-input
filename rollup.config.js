@@ -30,8 +30,13 @@ export default {
     url(),
     svgr(),
     babel({
+      babelrc: false,
+      presets: [['@babel/env', { 'modules': false }], '@babel/react'],
       exclude: 'node_modules/**',
-      plugins: [ 'external-helpers' ]
+      plugins: [
+        '@babel/plugin-proposal-export-default-from',
+        '@babel/plugin-proposal-function-bind'
+      ]
     }),
     resolve(),
     commonjs()
