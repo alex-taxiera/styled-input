@@ -10,9 +10,21 @@ const App = () => {
   const {
     values,
     hasErrors,
+    isComplete,
     handleChange,
     handleSubmit
-  } = useForm(() => {
+  } = useForm({
+    name: {
+      value: '',
+      isRequired: true
+    },
+    message: {
+      value: '',
+      isRequired: true
+    }
+  }, () => {
+    console.log('called')
+    
     if (canSubmit) {
       setSuccess(true)
     } else {
@@ -20,7 +32,11 @@ const App = () => {
     }
   })
 
-  const canSubmit = !hasErrors && values.name && values.message
+  const canSubmit = !hasErrors && isComplete
+  console.log('canSubmit', canSubmit)
+  console.log('values', values)
+  console.log('hasErrors', hasErrors)
+  console.log('isComplete', isComplete)
 
   return (
     <div className="page">
@@ -42,11 +58,13 @@ const App = () => {
           </div>
         ) : (
           <form onSubmit={handleSubmit} disabled={!canSubmit}>
+          <h2>My Cool Form</h2>
             <StyledInput
               name="name"
               id="name"
               label="Your Name"
               type="text"
+              value={values.name.value}
               isRequired
               onChange={handleChange}
             />
@@ -55,18 +73,25 @@ const App = () => {
               id="message"
               label="Your Message"
               type="textarea"
+              value={values.message.value}
               isRequired
               onChange={handleChange}
             />
-            <div className="error-message">{error}</div>
+            <div className="error-message">{error && error.message}</div>
             <div className="submit-wrapper">
-              <button type="submit" disabled={!canSubmit}>
+              <button type="submit" className={!canSubmit ? 'disabled' : ''}>
                 Submit
               </button>
             </div>
           </form>
         )}
       </div>
+      <footer>
+        <div className="flex">
+          <div>&copy; <a href="https://www.github.com/alex-taxiera">Alex Taxiera</a></div>
+          <div><a href="https://www.github.com/alex-taxiera/styled-input">{'<Code />'}</a></div>
+        </div>
+      </footer>
     </div>
   )
 }
