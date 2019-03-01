@@ -1,18 +1,12 @@
 $normal: 1rem;
 $small: 0.65rem;
-$error-color: red;
-$accent-color: darkslateblue;
 
-.styled-input-wrapper {
+.wrapper {
   position: relative;
   color: #999;
 }
 
-.styled-input-error {
-  color: $error-color;
-}
-
-.styled-input-error-message {
+.errorMessage {
   height: $normal;
   text-align: left;
   padding-left: $normal;
@@ -20,7 +14,7 @@ $accent-color: darkslateblue;
   white-space: nowrap;
 }
 
-.styled-input {
+.inputWrapper {
   position: relative;
   width: 100%;
   margin-top: $normal;
@@ -29,7 +23,7 @@ $accent-color: darkslateblue;
           box-shadow: 0 0 12px rgba(192, 192, 192, 0.6);
 }
 
-.styled-input-label {
+.label {
   position: absolute;
   top: $normal;
   left: $normal;
@@ -39,7 +33,7 @@ $accent-color: darkslateblue;
   pointer-events: none;
 }
 
-.styled-input-with-value {
+.withValue {
   font-size: $small;
   top: -$normal;
   -webkit-transition: all 0.125s ease;
@@ -47,12 +41,8 @@ $accent-color: darkslateblue;
   pointer-events: all;
 }
 
-.styled-input-focused {
-  color: $accent-color;
-}
-
-.styled-input input,
-.styled-input textarea {
+.inputWrapper input,
+.inputWrapper textarea {
   width: 100%;
   display: block;
   padding: $normal;
@@ -60,12 +50,12 @@ $accent-color: darkslateblue;
   font-size: $normal;
 }
 
-.styled-input input:focus,
-.styled-input textarea:focus {
+.inputWrapper input:focus,
+.inputWrapper textarea:focus {
   outline: 0;
 }
 
-.styled-input textarea {
+.inputWrapper textarea {
   font-family: inherit;
   resize: none;
   overflow: auto;
@@ -73,8 +63,7 @@ $accent-color: darkslateblue;
   height: 8 * $normal;
 }
 
-.styled-input-line {
-  background: $accent-color;
+.line {
   display: block;
   width: 0;
   height: 3px;
@@ -86,12 +75,8 @@ $accent-color: darkslateblue;
           transition: all 0.125s ease;
 }
 
-.styled-input-line.styled-input-focused {
+.lineFocused {
   width: 100%;
   -webkit-transition: all 0.075s ease;
           transition: all 0.075s ease;
-}
-
-.styled-input-line.styled-input-error {
-  background: $error-color;
 }

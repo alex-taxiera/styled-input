@@ -23,8 +23,6 @@ const App = () => {
       isRequired: true
     }
   }, () => {
-    console.log('called')
-    
     if (canSubmit) {
       setSuccess(true)
     } else {
@@ -33,10 +31,6 @@ const App = () => {
   })
 
   const canSubmit = !hasErrors && isComplete
-  console.log('canSubmit', canSubmit)
-  console.log('values', values)
-  console.log('hasErrors', hasErrors)
-  console.log('isComplete', isComplete)
 
   return (
     <div className="page">
