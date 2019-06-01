@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-
-import useMultiState from 'use-multi-state'
 
 import style from './styles/StyledInput.scss'
 
 const classname = (...args) => args.filter((arg) => arg).join(' ')
 
-const StyledInput = (props) => {
+export default function StyledInput (props) {
   const {
     name,
     id,
@@ -31,10 +29,8 @@ const StyledInput = (props) => {
     errorMessageStyle
   } = props
 
-  const [
-    [focused, setFocused],
-    [error, setError]
-  ] = useMultiState(false, null)
+  const [focused, setFocused] = useState(false)
+  const [error, setError] = useState(null)
 
   const fieldProps = {
     name,
@@ -143,5 +139,3 @@ StyledInput.defaultProps = {
   accentColor: 'darkslateblue',
   errorColor: 'red'
 }
-
-export default StyledInput
