@@ -16,9 +16,9 @@ $small: 0.65rem;
 
 .inputWrapper {
   position: relative;
+  display: flex;
   width: 100%;
   margin-top: $normal;
-  border-radius: 3px;
   -webkit-box-shadow: 0 0 12px rgba(192, 192, 192, 0.6);
           box-shadow: 0 0 12px rgba(192, 192, 192, 0.6);
 }
@@ -43,11 +43,13 @@ $small: 0.65rem;
 
 .inputWrapper input,
 .inputWrapper textarea {
+  box-sizing: border-box;
   width: 100%;
   display: block;
   padding: $normal;
   border: 0;
   font-size: $normal;
+  border-radius: 3px;
 }
 
 .inputWrapper input:focus,

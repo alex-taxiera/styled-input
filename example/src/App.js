@@ -36,7 +36,6 @@ const App = () => {
     }
   })
 
-  console.log('fields', fields)
   const canSubmit = !hasErrors && isComplete
 
   return (
